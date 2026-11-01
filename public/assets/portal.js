@@ -1269,7 +1269,7 @@
       if(sub) sub.textContent = "Biarkan berkas kosong bila ingin mempertahankan foto lama.";
       if(skTitle) skTitle.value = item.title || "";
       if(skPub) skPub.checked = item.pub !== false;
-      if(/^(\/api\/|https:\/\/)/.test(item.imageUrl || "")){
+      if(/^(\/|https:\/\/)/.test(item.imageUrl || "")){
         if(skPreviewImg) skPreviewImg.src = item.imageUrl;
         if(skPreview) skPreview.hidden = false;
       }

@@ -22,6 +22,13 @@ const SCHOOL_PROFILE = {
   ppdb: "",
 };
 
+/* Foto slider bawaan: gedung SMA Negeri 1 Kota Ternate (file di public/assets/slider/).
+   Hanya dimasukkan bila slider masih kosong — foto yang ditambah/diubah admin tidak disentuh. */
+const DEFAULT_SLIDERS = [
+  { title: "Gedung Utama SMA Negeri 1 Kota Ternate", imageUrl: "/assets/slider/gedung-utama.jpg", sortOrder: 0, pub: true },
+  { title: "Halaman & Gedung Sekolah", imageUrl: "/assets/slider/halaman-sekolah.jpg", sortOrder: 1, pub: true },
+];
+
 async function main() {
   /* Akun admin dibuat dari environment — tidak ada kredensial bawaan di kode. */
   const username = process.env.ADMIN_USER;
@@ -64,6 +71,11 @@ async function main() {
     console.log("Profil sekolah siap.");
   } else {
     console.log("Data sudah pernah di-seed — entri LMS tidak disentuh.");
+  }
+
+  if ((await prisma.slider.count()) === 0) {
+    for (const s of DEFAULT_SLIDERS) await prisma.slider.create({ data: s });
+    console.log(`${DEFAULT_SLIDERS.length} foto gedung dimasukkan ke slider beranda.`);
   }
 }
 
