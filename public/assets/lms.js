@@ -705,7 +705,8 @@ BIND.game = (id) => {
   });
 };
 function mountGame(box, g, li){
-  const lvl = g.levels[li];
+  /* pilihan jawaban diacak tiap main, agar jawaban benar tidak selalu di posisi yang sama */
+  const lvl = Object.assign({}, g.levels[li], { q: g.levels[li].q.map(shuffleQ) });
   let i = 0, correct = 0, combo = 0, bestCombo = 0, answered = false;
   const pct = () => Math.round(i / lvl.q.length * 100);
   const shipPct = () => Math.min(92, 8 + (i / lvl.q.length) * 84);
