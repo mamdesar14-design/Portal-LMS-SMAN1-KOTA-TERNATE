@@ -1,12 +1,18 @@
 {
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
-  "installCommand": "npm install --legacy-peer-deps",
+  "installCommand": "npm install --legacy-peer-deps --include=dev",
   "outputDirectory": ".next",
   "framework": "nextjs",
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/api/:path*", "destination": "/api" }
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "/api"
+    }
   ],
   "crons": []
 }
