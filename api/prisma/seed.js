@@ -12,6 +12,14 @@ const LMS_ENTRIES = [
   { id:"pendais",          klass:"X", name:"Pendidikan Agama Islam", short:"PAI",  icon:"book",       color:"#0f766e", file:"mapel/pendais.html",          pub:true },
 ];
 
+/* Mapel tambahan yang LMS-nya sudah lengkap. Dimasukkan HANYA bila daftar LMS
+   masih berisi mapel bawaan/otomatis saja (admin belum menyusun daftarnya sendiri).
+   Untuk menyembunyikan mapel, matikan "Tampilkan di daftar siswa" — jangan dihapus. */
+const EXTRA_LMS_ENTRIES = [
+  { id:"bahasa-inggris",   klass:"X", name:"Bahasa Inggris",   short:"B. Inggris",   icon:"globe",     color:"#0b7285", file:"mapel/bahasa-inggris.html",   pub:true },
+  { id:"bahasa-indonesia", klass:"X", name:"Bahasa Indonesia", short:"B. Indonesia", icon:"book-open", color:"#c2410c", file:"mapel/bahasa-indonesia.html", pub:true },
+];
+
 const SCHOOL_PROFILE = {
   id: "default",
   name: "SMA Negeri 1 Kota Ternate",
@@ -73,6 +81,16 @@ async function main() {
     console.log("Profil sekolah siap.");
   } else {
     console.log("Data sudah pernah di-seed — entri LMS tidak disentuh.");
+  }
+
+  const entries = await prisma.lmsEntry.findMany();
+  const knownIds = new Set([...LMS_ENTRIES, ...EXTRA_LMS_ENTRIES].map((e) => e.id));
+  if (entries.length && entries.every((e) => knownIds.has(e.id))) {
+    const added = [];
+    for (const e of EXTRA_LMS_ENTRIES) {
+      if (!entries.some((x) => x.id === e.id)) { await prisma.lmsEntry.create({ data: e }); added.push(e.name); }
+    }
+    if (added.length) console.log(`Mapel baru ditambahkan ke daftar LMS: ${added.join(", ")}`);
   }
 
   const slides = await prisma.slider.findMany();
