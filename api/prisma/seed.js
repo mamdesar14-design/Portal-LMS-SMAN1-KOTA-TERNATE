@@ -27,6 +27,8 @@ const SCHOOL_PROFILE = {
 const DEFAULT_SLIDERS = [
   { title: "Gedung Utama SMA Negeri 1 Kota Ternate", imageUrl: "/assets/slider/gedung-utama.jpg", sortOrder: 0, pub: true },
   { title: "Halaman & Gedung Sekolah", imageUrl: "/assets/slider/halaman-sekolah.jpg", sortOrder: 1, pub: true },
+  /* wajah siswa sudah diburamkan */
+  { title: "Gerbang SMA Negeri 1 Kota Ternate", imageUrl: "/assets/slider/gerbang-sekolah.jpg", sortOrder: 2, pub: true },
 ];
 
 async function main() {
@@ -73,9 +75,22 @@ async function main() {
     console.log("Data sudah pernah di-seed — entri LMS tidak disentuh.");
   }
 
-  if ((await prisma.slider.count()) === 0) {
+  const slides = await prisma.slider.findMany();
+  const isDefault = (r) => DEFAULT_SLIDERS.some((s) => s.imageUrl === r.imageUrl);
+  if (slides.length === 0) {
     for (const s of DEFAULT_SLIDERS) await prisma.slider.create({ data: s });
     console.log(`${DEFAULT_SLIDERS.length} foto gedung dimasukkan ke slider beranda.`);
+  } else if (slides.every(isDefault)) {
+    /* Slider masih berisi foto bawaan saja (admin belum unggah foto sendiri):
+       tambahkan foto bawaan yang baru. Begitu admin mengunggah foto sendiri,
+       bagian ini tidak menyentuh slider lagi. */
+    const have = new Set(slides.map((r) => r.imageUrl));
+    let next = Math.max(...slides.map((r) => r.sortOrder ?? 0)) + 1;
+    const added = [];
+    for (const s of DEFAULT_SLIDERS) {
+      if (!have.has(s.imageUrl)) { await prisma.slider.create({ data: { ...s, sortOrder: next++ } }); added.push(s.title); }
+    }
+    if (added.length) console.log(`Foto bawaan baru ditambahkan ke slider: ${added.join(", ")}`);
   }
 }
 
