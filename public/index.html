@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="description" content="One Site SMANSA Ternate — daftar LMS mata pelajaran kelas X, XI, dan XII.">
+<meta name="theme-color" content="#f5f5f7" id="meta-theme">
+<title>One Site SMANSA Ternate</title>
+<link rel="icon" href="assets/logo-sman1.png">
+<link rel="apple-touch-icon" href="assets/logo-sman1.png">
+<script src="assets/boot.js"></script>
+<link rel="stylesheet" href="assets/portal.css">
+</head>
+<body>
+<section class="intro" id="intro" role="region" aria-labelledby="intro-title">
+  <picture class="intro-bg" aria-hidden="true">
+    <source media="(max-width: 700px)" srcset="assets/intro-sekolah-tall.webp">
+    <img src="assets/intro-sekolah-wide.webp" alt="" width="2200" height="1467" fetchpriority="high">
+  </picture>
+  <div class="intro-shade" aria-hidden="true"></div>
+  <div class="intro-inner">
+    <div class="intro-crest">
+      <img class="crest-sman1" src="assets/logo-sman1.png" alt="Logo SMA Negeri 1 Kota Ternate" width="64" height="64" decoding="async">
+      <img class="crest-malut" src="assets/logo-malut.svg" alt="Lambang Provinsi Maluku Utara" width="59" height="68" decoding="async">
+    </div>
+    <div class="intro-main">
+      <h1 class="intro-title" id="intro-title">
+        <span>One Site SMANSA Ternate</span>
+        <span class="intro-bloom" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M16 3v26M3 16h26M6.8 6.8l18.4 18.4M25.2 6.8 6.8 25.2"/>
+            <circle cx="16" cy="16" r="2.4"/>
+          </svg>
+        </span>
+      </h1>
+      <p class="intro-school">SMA Negeri 1 Kota Ternate</p>
+      <button type="button" class="intro-cta" id="intro-enter">
+        <span>Mulai</span>
+        <span class="intro-cta-ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<header class="nav">
+  <div class="nav-in gut">
+    <div class="brand-area">
+      <button type="button" class="brand-home" id="brand-home" title="Balik ke beranda" aria-label="Balik ke beranda"><span id="brand-home-ic" class="brand-home-ic" aria-hidden="true"></span></button>
+      <a class="brand" href="index.html" aria-label="Beranda LMS SMA Negeri 1 Kota Ternate">
+        <img class="brand-logo" src="assets/logo-sman1.png" alt="" width="38" height="38">
+        <span class="brand-text">
+          <b>SMA Negeri 1 Kota Ternate</b>
+          <small>Learning Management System</small>
+        </span>
+      </a>
+    </div>
+    <div class="nav-right">
+      <div class="admin-bar" id="admin-bar" hidden>
+        <div class="ab-group">
+          <button type="button" class="ab-btn ab-primary" id="ab-kelola" title="Kelola LMS" aria-label="Kelola LMS"><span class="ab-ic" id="ab-kelola-ic" aria-hidden="true"></span><span class="ab-label">Kelola</span></button>
+          <a class="ab-btn" id="ab-sheet" href="" target="_blank" rel="noopener noreferrer" title="Buka Spreadsheet Guru" aria-label="Buka Spreadsheet Guru" hidden><span class="ab-ic" id="ab-sheet-ic" aria-hidden="true"></span><span class="ab-label">Spreadsheet</span></a>
+        </div>
+        <div class="admin-cluster" id="admin-cluster">
+          <button type="button" class="hamb" id="btn-menu" aria-expanded="false" aria-controls="menu-pop" aria-label="Menu admin" aria-haspopup="true"><span class="hamb-bar"></span><span class="hamb-bar"></span><span class="hamb-bar"></span></button>
+          <div class="menu-pop" id="menu-pop" role="menu" aria-label="Menu admin" hidden></div>
+        </div>
+      </div>
+      <div class="seg" id="seg" role="radiogroup" aria-label="Tema tampilan">
+        <span class="seg-thumb" id="seg-thumb" aria-hidden="true"></span>
+        <button type="button" role="radio" data-t="light" aria-label="Mode terang" title="Mode terang"></button>
+        <button type="button" role="radio" data-t="auto" aria-label="Ikuti perangkat" title="Ikuti perangkat"></button>
+        <button type="button" role="radio" data-t="dark" aria-label="Mode gelap" title="Mode gelap"></button>
+      </div>
+      <button type="button" class="btn primary" id="btn-login">
+        <span id="btn-login-ic" aria-hidden="true"></span><span class="btn-label">Login</span>
+      </button>
+      <div class="who" id="who" hidden>
+        <span class="avatar" id="avatar" aria-hidden="true">A</span>
+        <span class="who-name" id="who-name">Admin</span>
+      </div>
+      <button type="button" class="ab-btn ab-danger" id="ab-logout" title="Keluar akun" aria-label="Keluar akun" hidden><span class="ab-ic" id="ab-logout-ic" aria-hidden="true"></span><span class="ab-label">Keluar</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="gut">
+  <section class="slider no-slides" id="slider" role="group" aria-roledescription="carousel" aria-label="Foto kegiatan sekolah">
+    <div class="slider-stage" id="slider-stage"></div>
+    <div class="slider-shade" aria-hidden="true"></div>
+    <div class="gut slider-top">
+        <div class="slide-brand">
+          <img class="sec-logo" src="assets/logo-sman1.png" alt="Logo SMA Negeri 1 Kota Ternate" width="54" height="54" decoding="async">
+          <span class="brand-txt-lg">
+            <b>SMA NEGERI 1</b>
+            <small>KOTA TERNATE</small>
+          </span>
+        </div>
+      </div>
+      <h1 id="portal-title" tabindex="-1">One Site SMANSA Ternate</h1>
+    <button type="button" class="slider-nav slider-prev" id="slider-prev" aria-label="Foto sebelumnya" tabindex="-1"><span id="slider-prev-ic" aria-hidden="true"></span></button>
+    <button type="button" class="slider-nav slider-next" id="slider-next" aria-label="Foto berikutnya" tabindex="-1"><span id="slider-next-ic" aria-hidden="true"></span></button>
+    <div class="slider-dots" id="slider-dots" aria-label="Pilih foto"></div>
+    <p class="sr-only" id="slider-live" aria-live="polite"></p>
+  </section>
+
+  <section class="hero">
+    <p class="eyebrow">SMA Negeri 1 Kota Ternate · <span id="hero-eyebrow">Fase E</span></p>
+    <div class="hero-actions">
+      <div class="seg" id="class-seg" role="radiogroup" aria-label="Pilih kelas">
+        <span class="seg-thumb" id="class-thumb" aria-hidden="true"></span>
+        <button type="button" role="radio" data-k="X" aria-label="Kelas X">X</button>
+        <button type="button" role="radio" data-k="XI" aria-label="Kelas XI">XI</button>
+        <button type="button" role="radio" data-k="XII" aria-label="Kelas XII">XII</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="search">
+    <span class="s-ic" id="s-ic" aria-hidden="true"></span>
+    <input id="q" type="search" inputmode="search" enterkeyhint="search" placeholder="Cari mata pelajaran…" aria-label="Cari mata pelajaran" aria-keyshortcuts="/" autocomplete="off" spellcheck="false">
+    <button type="button" class="q-clear" id="q-clear" aria-label="Hapus pencarian" hidden><span id="q-clear-ic" aria-hidden="true"></span></button>
+  </div>
+  <p class="search-meta" id="search-meta" aria-live="polite" hidden></p>
+  <p class="noback" id="noback" role="status" hidden>
+    <span class="nb-ic" aria-hidden="true"></span>
+    <span>Backend tidak terhubung — mode baca saja. Login &amp; kelola LMS butuh backend aktif.</span>
+  </p>
+
+  <section class="cards is-first" id="grid" aria-label="Daftar LMS"></section>
+  <p class="empty" id="empty" hidden>
+    <span class="e-ic" id="e-ic" aria-hidden="true"></span>
+    <span id="empty-text"></span>
+    <button type="button" class="btn ghost empty-reset" id="empty-reset" hidden>Hapus pencarian</button>
+  </p>
+</main>
+
+<footer>
+  <div class="gut f-top">
+    <div class="f-about">
+      <div class="f-brand">
+        <img class="f-logo" src="assets/logo-sman1.png" alt="Logo SMA Negeri 1 Kota Ternate" width="40" height="40">
+        <span class="f-brand-txt">
+          <b>SMA Negeri 1 Kota Ternate</b>
+          <small>Learning Management System</small>
+        </span>
+      </div>
+      <p class="f-desc">One Site SMANSA Ternate adalah rumah belajar digital siswa Kelas X&ndash;XII. Pilih kelas dan mata pelajaran, lalu buka materi, e-book, asesmen, gim edukatif, serta lab maya dalam satu tempat. Progres belajar tersimpan otomatis di perangkat.</p>
+    </div>
+    <div class="f-cols">
+      <div class="f-col">
+        <h3>Untuk Siswa</h3>
+        <ul>
+          <li>Pilih kelas &amp; mata pelajaran</li>
+          <li>Materi, e-book &amp; pustaka</li>
+          <li>Asesmen diagnostik sampai sumatif</li>
+          <li>Gim edukatif &amp; lab maya</li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h3>Progres &amp; Akses</h3>
+        <ul>
+          <li>Progres tersimpan di perangkat</li>
+          <li>Tautan LMS tersimpan di database</li>
+          <li>16 mata pelajaran <span class="nw">Kelas X&ndash;XII</span></li>
+          <li>Fase E (X) &amp; <span class="nw">Fase F (XI&ndash;XII)</span></li>
+        </ul>
+      </div>
+      <div class="f-col f-theme-col" id="f-theme-col" hidden>
+        <h3>Tampilan</h3>
+        <div class="f-theme-slot" id="seg-footer-slot"></div>
+      </div>
+    </div>
+  </div>
+  <div class="gut f-bottom">
+    <p>&copy; <span id="f-year">2026</span> SMA Negeri 1 Kota Ternate &middot; Ternate, Maluku Utara</p>
+  </div>
+</footer>
+
+<!-- Masuk admin -->
+<!-- Login admin -->
+<div class="sheet-wrap" id="modal-login" hidden>
+  <div class="sheet-backdrop" data-close></div>
+  <div class="sheet login-sheet" role="dialog" aria-modal="true" aria-labelledby="login-title">
+    <button type="button" class="x login-x" data-close aria-label="Tutup"></button>
+    <div class="login-grid">
+      <div class="login-side">
+        <p class="login-eyebrow">One Site SMANSA Ternate</p>
+        <h2 id="login-title">Login</h2>
+        <p class="login-sub">Selamat datang kembali. Silakan masuk dengan akun admin sekolah.</p>
+        <form id="login-form">
+          <div class="f-field">
+            <input id="login-user" type="text" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="Email / nama pengguna admin" autocomplete="username" required aria-label="Email atau nama pengguna admin">
+            <span class="f-ic" id="login-mail-ic"></span>
+          </div>
+          <div class="f-field">
+            <input id="login-pass" type="password" placeholder="Kata sandi" autocomplete="current-password" required aria-label="Kata sandi">
+            <button type="button" class="f-ic f-ic-btn" id="login-eye" aria-label="Tampilkan atau sembunyikan kata sandi" tabindex="-1"></button>
+          </div>
+          <p class="form-err" id="login-err" hidden></p>
+          <button type="submit" class="btn primary login-submit" id="login-submit">Login</button>
+        </form>
+        <p class="login-note">Belum ada akun? Silakan hubungi operator sekolah.</p>
+      </div>
+      <div class="login-pic" aria-hidden="true">
+        <picture>
+          <source type="image/webp" srcset="assets/login-gedung.webp">
+          <img src="assets/login-gedung.jpg" alt="" loading="lazy" decoding="async" width="1400" height="1052">
+        </picture>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Kelola LMS (halaman penuh) -->
+<div class="sheet-wrap page-wrap" id="modal-kelola" hidden>
+  <div class="sheet page" role="dialog" aria-modal="true" aria-label="Kelola portal">
+    <header class="page-bar">
+      <div class="gut page-bar-in">
+        <button type="button" class="page-back" data-close data-autofocus aria-label="Kembali ke portal" title="Kembali ke portal"><span id="k-back-ic" aria-hidden="true"></span></button>
+        <div class="page-switch" role="tablist" aria-label="Pilih halaman kelola">
+          <button type="button" class="page-switch-item is-on" role="tab" aria-selected="true" aria-controls="k-view-lms" data-view="lms" id="tab-kelola-lms">Kelola LMS</button>
+          <span class="page-switch-div" aria-hidden="true"></span>
+          <button type="button" class="page-switch-item" role="tab" aria-selected="false" aria-controls="k-view-foto" data-view="foto" id="tab-kelola-foto">Kelola Foto</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-scroll">
+      <div class="gut page-body">
+        <div class="k-view" id="k-view-lms" role="tabpanel" aria-labelledby="tab-kelola-lms">
+        <div class="manage-tools">
+          <span class="manage-label">Kelas</span>
+          <div class="seg" id="kelola-seg" role="radiogroup" aria-label="Kelas yang dikelola">
+            <span class="seg-thumb" id="kelola-thumb" aria-hidden="true"></span>
+            <button type="button" role="radio" data-k="X" aria-label="Kelas X">X</button>
+            <button type="button" role="radio" data-k="XI" aria-label="Kelas XI">XI</button>
+            <button type="button" role="radio" data-k="XII" aria-label="Kelas XII">XII</button>
+          </div>
+          <button type="button" class="btn primary" id="k-add"><span id="k-add-ic" aria-hidden="true"></span> Tambah LMS</button>
+        </div>
+
+        <div class="k-workspace">
+        <form id="kelola-form" class="k-form-card" aria-labelledby="k-form-title" hidden>
+          <div class="k-form-head">
+            <h3 id="k-form-title">Tambah LMS</h3>
+            <p id="k-form-sub">Lengkapi data LMS untuk kelas yang dipilih.</p>
+          </div>
+          <div class="form-row">
+            <label>Nama mata pelajaran *
+              <input id="k-name" required placeholder="cth. Matematika">
+            </label>
+            <label>Nama singkatan
+              <input id="k-short" maxlength="40" placeholder="cth. MTK">
+            </label>
+          </div>
+          <label>Tautan LMS *
+            <input id="k-url" type="text" inputmode="url" required placeholder="https://… atau mapel/nama.html">
+          </label>
+          <label>Apps Script Deployment ID (opsional, untuk integrasi Spreadsheet)
+            <input id="k-script" placeholder="AKfycb… — kosongkan jika tidak pakai Spreadsheet">
+          </label>
+          <div class="form-row">
+            <label>Nama guru
+              <input id="k-teacher" placeholder="cth. Ibu Rahma">
+            </label>
+            <label>Ikon
+              <select id="k-icon"></select>
+            </label>
+          </div>
+          <div class="form-row form-row-color">
+            <label>Warna
+              <input id="k-color" type="color" value="#0d9488">
+            </label>
+            <label class="form-check">
+              <input id="k-pub" type="checkbox" checked> Tampilkan di daftar siswa
+            </label>
+          </div>
+          <p class="form-err" id="k-err" hidden></p>
+          <div class="sheet-actions">
+            <button type="button" class="btn ghost" id="k-cancel">Batal</button>
+            <button type="submit" class="btn primary" id="k-save">Simpan</button>
+          </div>
+        </form>
+
+        <section class="k-section" aria-labelledby="k-list-title">
+          <div class="k-section-head">
+            <h3 id="k-list-title">Daftar LMS</h3>
+            <p class="k-count" id="k-count" aria-live="polite"></p>
+          </div>
+          <div class="k-list" id="k-list"></div>
+        </section>
+        </div>
+        </div>
+
+        <div class="k-view" id="k-view-foto" role="tabpanel" aria-labelledby="tab-kelola-foto" hidden>
+        <div class="manage-tools">
+          <span class="manage-label">Beranda</span>
+          <button type="button" class="btn primary" id="sk-add-head"><span id="sk-add-head-ic" aria-hidden="true"></span> Tambah Foto</button>
+        </div>
+
+        <section class="k-section sk-section" aria-labelledby="sk-head">
+          <div class="k-section-head">
+            <h3 id="sk-head">Foto Slider Beranda</h3>
+            <p class="k-count" id="sk-count" aria-live="polite"></p>
+          </div>
+          <form id="sk-form" class="k-form-card sk-form" aria-labelledby="sk-form-title" hidden>
+            <div class="k-form-head">
+              <h3 id="sk-form-title">Tambah Foto</h3>
+              <p id="sk-form-sub">Unggah foto kegiatan yang akan berputar di beranda (JPG/PNG/WebP, maks 8&nbsp;MB).</p>
+            </div>
+            <div class="sk-pick">
+              <input id="sk-input" type="file" accept="image/jpeg,image/png,image/webp" aria-label="Pilih berkas foto dari perangkat">
+            </div>
+            <figure class="sk-preview" id="sk-preview" hidden>
+              <img id="sk-preview-img" alt="Pratinjau foto yang dipilih">
+            </figure>
+            <label>Judul (tampil di pojok foto, opsional)
+              <input id="sk-title" maxlength="80" placeholder="cth. Upacara Hari Kemerdekaan">
+            </label>
+            <label class="form-check">
+              <input id="sk-pub" type="checkbox" checked> Tampilkan di slider beranda
+            </label>
+            <p class="form-err" id="sk-err" hidden></p>
+            <div class="sheet-actions">
+              <button type="button" class="btn ghost" id="sk-cancel">Batal</button>
+              <button type="submit" class="btn primary" id="sk-save">Simpan</button>
+            </div>
+          </form>
+          <div class="k-list sk-list" id="sk-list"></div>
+        </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pantau progres -->
+<div class="sheet-wrap" id="modal-pantau" hidden>
+  <div class="sheet-backdrop" data-close></div>
+  <div class="sheet xwide" role="dialog" aria-modal="true" aria-labelledby="pantau-title">
+    <div class="sheet-head">
+      <div>
+        <h2 id="pantau-title">Pantau Progres</h2>
+        <p class="sheet-sub">Ringkasan belajar dan langkah berikutnya dari perangkat ini.</p>
+      </div>
+      <button type="button" class="x" data-close aria-label="Tutup"></button>
+    </div>
+
+    <div class="p-toolbar">
+      <div class="seg" id="pantau-seg" role="radiogroup" aria-label="Filter kelas">
+        <span class="seg-thumb" id="pantau-thumb" aria-hidden="true"></span>
+        <button type="button" role="radio" data-k="all" aria-label="Semua kelas">Semua</button>
+        <button type="button" role="radio" data-k="X" aria-label="Kelas X">X</button>
+        <button type="button" role="radio" data-k="XI" aria-label="Kelas XI">XI</button>
+        <button type="button" role="radio" data-k="XII" aria-label="Kelas XII">XII</button>
+      </div>
+      <div class="p-actions">
+        <button type="button" class="btn ghost" id="pantau-csv"><span id="pantau-csv-ic" aria-hidden="true"></span> Unduh CSV</button>
+        <a class="btn ghost" id="pantau-drive" href="" target="_blank" rel="noopener noreferrer" hidden><span id="pantau-drive-ic" aria-hidden="true"></span> Spreadsheet Guru</a>
+      </div>
+    </div>
+
+    <div class="p-hero" id="pantau-summary"></div>
+
+    <div id="pantau-body"></div>
+  </div>
+</div>
+
+<button type="button" class="to-top" id="to-top" aria-label="Kembali ke atas" aria-hidden="true" tabindex="-1"><span id="to-top-ic" aria-hidden="true"></span></button>
+<div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+
+<script src="assets/icons.js"></script>
+<script src="data/registry.js"></script>
+<script src="config.js"></script>
+<script src="assets/api-client.js"></script>
+<script src="assets/portal.js"></script>
+<script src="assets/intro.js"></script>
+</body>
+</html>
