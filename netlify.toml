@@ -1,0 +1,28 @@
+[build]
+  # Situs statis (portal + halaman mapel) ada di folder public/
+  publish = "public"
+  command = "node scripts/build-config.mjs"
+
+[build.environment]
+  # Repo ini punya dependensi `next`, tapi yang dideploy ke Netlify hanya situs
+  # statis di public/. Matikan plugin Next.js otomatis agar build tidak gagal.
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+  X-Frame-Options = "DENY"
+  X-Content-Type-Options = "nosniff"
+  Referrer-Policy = "strict-origin-when-cross-origin"
+  Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://script.google.com;"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://lms-api.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
