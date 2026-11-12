@@ -231,7 +231,7 @@ const files = args.length ? args.map(resolveArg)
   : fs.readdirSync(path.join(ROOT, "data")).filter(x => x.endsWith(".js") && x !== "registry.js")
       .map(x => path.join(ROOT, "data", x));
 
-if(!files.length) E("(files)", "tidak ada file data untuk divalidasi");
+if(!files.length){ console.log("Tidak ada data/*.js lama untuk divalidasi (semua mapel sudah memakai mesin LMS mandiri)."); process.exit(0); }
 
 for(const abs of files){
   const f = path.relative(ROOT, abs);
