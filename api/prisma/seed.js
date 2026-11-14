@@ -21,6 +21,7 @@ const EXTRA_LMS_ENTRIES = [
   { id:"biologi",          klass:"X", name:"Biologi",          short:"Biologi",      icon:"dna",       color:"#2f9e44", file:"mapel/biologi.html",          pub:true },
   { id:"kimia",            klass:"X", name:"Kimia",            short:"Kimia",        icon:"flask",     color:"#e8590c", file:"mapel/kimia.html",            pub:true },
   { id:"geografi",         klass:"X", name:"Geografi",         short:"Geografi",     icon:"map",       color:"#1971c2", file:"mapel/geografi.html",         pub:true },
+  { id:"ekonomi",          klass:"X", name:"Ekonomi",          short:"Ekonomi",      icon:"coins",     color:"#ca8a04", file:"mapel/ekonomi.html",          pub:true },
 ];
 
 const SCHOOL_PROFILE = {
