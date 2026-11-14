@@ -4542,7 +4542,7 @@ function tabDone(n,t){const u=UNITS.find(x=>x.n===n), P=S.prog&&S.prog[n]||{};
     case "tugas": return !!(S.proj&&S.proj[n]);
     case "refl": return !!(S.refl&&S.refl[n]&&S.refl[n].at);
   } return true}
-function tabLock(n,t){ if(S.unlockAll) return null; const i=TAB_SEQ.indexOf(t); if(i<=0) return null;
+function tabLock(n,t){ if(S.unlockAll||t==="lkpd") return null; const i=TAB_SEQ.indexOf(t); if(i<=0) return null;
   for(let k=0;k<i;k++){const p=TAB_SEQ[k]; if(!tabDone(n,p)) return p} return null}
 function firstOpen(n){for(const t of TAB_SEQ){if(!tabDone(n,t)||t==="refl") return t} return "awal"}
 function markProg(n,k){S.prog=S.prog||{};S.prog[n]=S.prog[n]||{};if(!S.prog[n][k]){S.prog[n][k]=nowStr();save()}}
