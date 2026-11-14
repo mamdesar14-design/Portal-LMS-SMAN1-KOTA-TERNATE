@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
-  title: "LMS SMA Negeri 1 Kota Ternate",
-  description: "Portal LMS mata pelajaran kelas X, XI, dan XII",
+  title: "EDUSITE SMANSA",
+  description: "EDUSITE SMANSA — LMS mata pelajaran kelas X, XI, dan XII",
 };
 
 export default function RootLayout({
