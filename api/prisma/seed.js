@@ -18,6 +18,9 @@ const LMS_ENTRIES = [
 const EXTRA_LMS_ENTRIES = [
   { id:"bahasa-inggris",   klass:"X", name:"Bahasa Inggris",   short:"B. Inggris",   icon:"globe",     color:"#0b7285", file:"mapel/bahasa-inggris.html",   pub:true },
   { id:"bahasa-indonesia", klass:"X", name:"Bahasa Indonesia", short:"B. Indonesia", icon:"book-open", color:"#c2410c", file:"mapel/bahasa-indonesia.html", pub:true },
+  { id:"biologi",          klass:"X", name:"Biologi",          short:"Biologi",      icon:"dna",       color:"#2f9e44", file:"mapel/biologi.html",          pub:true },
+  { id:"kimia",            klass:"X", name:"Kimia",            short:"Kimia",        icon:"flask",     color:"#e8590c", file:"mapel/kimia.html",            pub:true },
+  { id:"geografi",         klass:"X", name:"Geografi",         short:"Geografi",     icon:"map",       color:"#1971c2", file:"mapel/geografi.html",         pub:true },
 ];
 
 const SCHOOL_PROFILE = {
