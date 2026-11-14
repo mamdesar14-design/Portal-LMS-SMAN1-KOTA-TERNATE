@@ -5572,7 +5572,7 @@ autorestore();
 /* Dibuat oleh Ibu Sabaria Umahuk · English LMS Kelas X · SMA Negeri 1 Kota Ternate · © 2026 */
 /* ================= SERTIFIKAT PER UNIT =================
    Syarat: semua misi unit selesai + nilai Formatif terbaik ≥ KKTP. Ditandatangani guru.      */
-const CERT_TEACHER={name:"Sabaria Umahuk",role:"English Teacher"};
+const CERT_TEACHER={name:"",role:"English Teacher"};
 IC.cert='<circle cx="12" cy="9" r="6"/><path d="M9 14.5 7.5 22 12 19.5 16.5 22 15 14.5"/>';
 NAV.splice(NAV.findIndex(x=>x[0]==="grades"),0,["cert","Sertifikat",1]);
 function certEligible(n){return TAB_SEQ.every(t=>tabDone(n,t))&&quizBest("fo-"+n)>=KKTP}
