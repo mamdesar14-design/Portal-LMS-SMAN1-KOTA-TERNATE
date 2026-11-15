@@ -23,6 +23,7 @@ const EXTRA_LMS_ENTRIES = [
   { id:"geografi",         klass:"X", name:"Geografi",         short:"Geografi",     icon:"map",       color:"#1971c2", file:"mapel/geografi.html",         pub:true },
   { id:"ekonomi",          klass:"X", name:"Ekonomi",          short:"Ekonomi",      icon:"coins",     color:"#ca8a04", file:"mapel/ekonomi.html",          pub:true },
   { id:"sosiologi",        klass:"X", name:"Sosiologi",        short:"Sosiologi",    icon:"users",     color:"#c2255c", file:"mapel/sosiologi.html",        pub:true },
+  { id:"pkn",              klass:"X", name:"Pendidikan Pancasila", short:"Pancasila", icon:"landmark",  color:"#9c36b5", file:"mapel/pkn.html",              pub:true },
 ];
 
 const SCHOOL_PROFILE = {
