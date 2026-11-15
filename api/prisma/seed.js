@@ -22,6 +22,7 @@ const EXTRA_LMS_ENTRIES = [
   { id:"kimia",            klass:"X", name:"Kimia",            short:"Kimia",        icon:"flask",     color:"#e8590c", file:"mapel/kimia.html",            pub:true },
   { id:"geografi",         klass:"X", name:"Geografi",         short:"Geografi",     icon:"map",       color:"#1971c2", file:"mapel/geografi.html",         pub:true },
   { id:"ekonomi",          klass:"X", name:"Ekonomi",          short:"Ekonomi",      icon:"coins",     color:"#ca8a04", file:"mapel/ekonomi.html",          pub:true },
+  { id:"sosiologi",        klass:"X", name:"Sosiologi",        short:"Sosiologi",    icon:"users",     color:"#c2255c", file:"mapel/sosiologi.html",        pub:true },
 ];
 
 const SCHOOL_PROFILE = {
