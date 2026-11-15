@@ -5431,6 +5431,7 @@ document.addEventListener("click",e=>{
   case "rqQ":{const s=ML.inf;if(+d.i===0){s.rq=true;s.rqMsg="✅ Tepat! 200.000 ÷ 1.200.000 × 100% ≈ 16,7%. Sudah cukup sehat (≥ 10%), tetapi pos cicilan paylater sebaiknya dihentikan agar tabungan bisa naik."}else s.rqMsg="❌ Belum tepat. Bagi setoran tabungan dengan total pemasukan.";labScore("inf",mlInfScore(),mlInfKet(),"Lab Laporan Keuangan Pribadi");render();}break;
  }
 });
+;(function(){const sh=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};const fix=e=>{if(Array.isArray(e)&&typeof e[0]==="string"&&Array.isArray(e[1])&&e[1].length>1&&e[1].every(x=>typeof x==="string")&&Number.isInteger(e[2])&&e[2]>=0&&e[2]<e[1].length&&!e.some((x,k)=>k!==1&&Array.isArray(x)&&x.length===e[1].length)){const c=e[1][e[2]];sh(e[1]);e[2]=e[1].indexOf(c)}};["MLEV","MLIM","MLIQ","MLNR","MLOF","MLPOS","MLSQ","MLTC","MLTX","MLVER"].forEach(n=>{try{const A=eval(n);if(Array.isArray(A))A.forEach(fix)}catch(_){}})})(); /* acak opsi kuis lab */
 </script>
 </body>
 </html>

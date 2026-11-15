@@ -5498,6 +5498,7 @@ document.addEventListener("click",e=>{
   case "gisQ":{const s=ML.inf,q=MLGQ[s.q];if(+d.i===q[2]){s.q=(s.q+1)%MLGQ.length;s.qMsg="✅ Tepat!";if(s.q===0){s.qDone=true;s.qMsg="✅ Semua pertanyaan terjawab. Overlay, buffer, dan data atribut adalah inti analisis SIG.";labScore("inf",mlInfScore(),`Kuis ✓; misi ${s.done.length}/${MLGISM.length}`,"Lab SIG Overlay Rawan Bencana")}}else s.qMsg="❌ Belum tepat. Ingat lagi fungsi setiap analisis SIG.";render();}break;
  }
 });
+;(function(){const sh=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};const fix=e=>{if(Array.isArray(e)&&typeof e[0]==="string"&&Array.isArray(e[1])&&e[1].length>1&&e[1].every(x=>typeof x==="string")&&Number.isInteger(e[2])&&e[2]>=0&&e[2]<e[1].length&&!e.some((x,k)=>k!==1&&Array.isArray(x)&&x.length===e[1].length)){const c=e[1][e[2]];sh(e[1]);e[2]=e[1].indexOf(c)}};["MLBAR","MLCIT","MLCT","MLEQM","MLEQS","MLGISM","MLGQ","MLJT","MLKQ","MLLAY","MLOBJ","MLPT","MLROM","MLSK","MLUN"].forEach(n=>{try{const A=eval(n);if(Array.isArray(A))A.forEach(fix)}catch(_){}})})(); /* acak opsi kuis lab */
 </script>
 </body>
 </html>

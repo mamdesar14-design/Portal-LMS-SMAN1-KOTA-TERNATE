@@ -5521,6 +5521,7 @@ document.addEventListener("click",e=>{
   case "wQ":{const s=ML.inf,q=MLWQZ[s.q];if(+d.i===q[2]){s.q=(s.q+1)%MLWQZ.length;s.qMsg="✅ Tepat!";if(s.q===0){s.qDone=true;s.qMsg="✅ Semua pertanyaan terjawab. Pokok dijaga, hasilnya mengalir: itulah wakaf.";const planOk=s.pmsg.startsWith("✅");labScore("inf",planOk?100:50,`Pertanyaan wakaf selesai${planOk?"; rencana sah":""}`,"Kalkulator & Perencana Wakaf")}}else s.qMsg="❌ Belum tepat. Lihat lagi hasil kalkulator.";render();}break;
  }
 });
+;(function(){const sh=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};const fix=e=>{if(Array.isArray(e)&&typeof e[0]==="string"&&Array.isArray(e[1])&&e[1].length>1&&e[1].every(x=>typeof x==="string")&&Number.isInteger(e[2])&&e[2]>=0&&e[2]<e[1].length&&!e.some((x,k)=>k!==1&&Array.isArray(x)&&x.length===e[1].length)){const c=e[1][e[2]];sh(e[1]);e[2]=e[1].indexOf(c)}};["MLAKAD","MLIDG","MLNAZ","MLPER","MLRUKUN","MLRUTE","MLTOKOH","MLWQ","MLWQZ"].forEach(n=>{try{const A=eval(n);if(Array.isArray(A))A.forEach(fix)}catch(_){}})})(); /* acak opsi kuis lab */
 </script>
 </body>
 </html>
