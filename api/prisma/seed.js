@@ -46,6 +46,8 @@ const DEFAULT_SLIDERS = [
   { title: "Halaman & Gedung Sekolah", imageUrl: "/assets/slider/halaman-sekolah.jpg", sortOrder: 1, pub: true },
   /* wajah siswa sudah diburamkan */
   { title: "Gerbang SMA Negeri 1 Kota Ternate", imageUrl: "/assets/slider/gerbang-sekolah.jpg", sortOrder: 2, pub: true },
+  /* tampil paling depan (sortOrder negatif) */
+  { title: "Keluarga Besar Guru SMA Negeri 1 Kota Ternate", imageUrl: "/assets/slider/guru-smansa.jpg", sortOrder: -1, pub: true },
 ];
 
 async function main() {
@@ -115,7 +117,7 @@ async function main() {
     let next = Math.max(...slides.map((r) => r.sortOrder ?? 0)) + 1;
     const added = [];
     for (const s of DEFAULT_SLIDERS) {
-      if (!have.has(s.imageUrl)) { await prisma.slider.create({ data: { ...s, sortOrder: next++ } }); added.push(s.title); }
+      if (!have.has(s.imageUrl)) { await prisma.slider.create({ data: { ...s, sortOrder: s.sortOrder < 0 ? s.sortOrder : next++ } }); added.push(s.title); }
     }
     if (added.length) console.log(`Foto bawaan baru ditambahkan ke slider: ${added.join(", ")}`);
   }

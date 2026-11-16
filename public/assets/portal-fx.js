@@ -151,7 +151,7 @@
   }
 
   /* ---------- 8. Muncul saat digulir ---------- */
-  var revealSel = ["footer .f-about", "footer .f-col"];
+  var revealSel = [".kepsek", "footer .f-about", "footer .f-col"];
   var targets = [];
   revealSel.forEach(function(s){
     document.querySelectorAll(s).forEach(function(el, i){ el.classList.add("fx-reveal"); el.style.setProperty("--rd", i); targets.push(el); });
