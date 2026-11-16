@@ -26,6 +26,7 @@ const EXTRA_LMS_ENTRIES = [
   { id:"pkn",              klass:"X", name:"Pendidikan Pancasila", short:"Pancasila", icon:"landmark",  color:"#9c36b5", file:"mapel/pkn.html",              pub:true },
   { id:"pjok", klass:"X", name:"PJOK", short:"PJOK", icon:"activity", color:"#0c8599", file:"mapel/pjok.html", pub:true },
   { id:"informatika", klass:"X", name:"Informatika", short:"Informatika", icon:"laptop", color:"#364fc7", file:"mapel/informatika.html", pub:true },
+  { id:"prakarya", klass:"X", name:"Prakarya (Pengolahan)", short:"Prakarya", icon:"wrench", color:"#9c6644", file:"mapel/prakarya.html", pub:true },
 ];
 
 const SCHOOL_PROFILE = {
