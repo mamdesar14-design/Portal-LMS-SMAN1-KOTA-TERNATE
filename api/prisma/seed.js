@@ -25,6 +25,7 @@ const EXTRA_LMS_ENTRIES = [
   { id:"sosiologi",        klass:"X", name:"Sosiologi",        short:"Sosiologi",    icon:"users",     color:"#c2255c", file:"mapel/sosiologi.html",        pub:true },
   { id:"pkn",              klass:"X", name:"Pendidikan Pancasila", short:"Pancasila", icon:"landmark",  color:"#9c36b5", file:"mapel/pkn.html",              pub:true },
   { id:"pjok", klass:"X", name:"PJOK", short:"PJOK", icon:"activity", color:"#0c8599", file:"mapel/pjok.html", pub:true },
+  { id:"informatika", klass:"X", name:"Informatika", short:"Informatika", icon:"laptop", color:"#364fc7", file:"mapel/informatika.html", pub:true },
 ];
 
 const SCHOOL_PROFILE = {
