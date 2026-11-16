@@ -10,6 +10,7 @@
 <link rel="apple-touch-icon" href="assets/logo-sman1.png">
 <script src="assets/boot.js"></script>
 <link rel="stylesheet" href="assets/portal.css">
+<link rel="stylesheet" href="assets/portal-fx.css">
 </head>
 <body>
 <section class="intro" id="intro" role="region" aria-labelledby="intro-title">
@@ -109,6 +110,13 @@
 
   <section class="hero">
     <p class="eyebrow">SMA Negeri 1 Kota Ternate · <span id="hero-eyebrow">Fase E</span></p>
+    <h2 class="hero-title">Mau belajar apa <span class="hero-grad">hari ini?</span></h2>
+    <p class="sub">Pilih kelas, lalu buka mata pelajaranmu. Materi, e-book, gim edukatif, dan Lab Maya menunggu di dalamnya.</p>
+    <ul class="hero-stats" id="hero-stats" aria-label="Ringkasan">
+      <li><b data-count id="hs-mapel">0</b><span>mata pelajaran</span></li>
+      <li><b>4</b><span>Lab Maya per mapel</span></li>
+      <li><b>12</b><span>unit setahun</span></li>
+    </ul>
     <div class="hero-actions">
       <div class="seg" id="class-seg" role="radiogroup" aria-label="Pilih kelas">
         <span class="seg-thumb" id="class-thumb" aria-hidden="true"></span>
@@ -242,6 +250,8 @@
           </div>
           <button type="button" class="btn primary" id="k-add"><span id="k-add-ic" aria-hidden="true"></span> Tambah LMS</button>
         </div>
+
+        <div class="k-stats" id="k-stats" aria-live="polite"></div>
 
         <div class="k-workspace">
         <form id="kelola-form" class="k-form-card" aria-labelledby="k-form-title" hidden>
@@ -378,6 +388,7 @@
 <script src="config.js"></script>
 <script src="assets/api-client.js"></script>
 <script src="assets/portal.js"></script>
+<script src="assets/portal-fx.js"></script>
 <script src="assets/intro.js"></script>
 </body>
 </html>

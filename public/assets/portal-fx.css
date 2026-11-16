@@ -1,0 +1,260 @@
+/* EDUSITE SMANSA — lapisan visual & gerak (halus, elegan).
+   Dimuat setelah portal.css. Semua gerak mati bila perangkat meminta gerak minim. */
+:root{
+  --brand-1:#1d4ed8; --brand-2:#0ea5a4; --brand-3:#f2b705;
+  --grad-brand:linear-gradient(120deg, var(--brand-1), var(--brand-2));
+}
+
+/* ============ INTRO ============ */
+.intro-title.fx-split{ animation:none }
+.intro-title .ch{
+  display:inline-block; white-space:pre;
+  animation:fxChIn .9s cubic-bezier(.16,.84,.28,1) backwards;
+  animation-delay:calc(160ms + var(--k, 0) * 42ms);
+}
+@keyframes fxChIn{
+  0%{ opacity:0; transform:translateY(.42em) rotate(4deg); filter:blur(10px) }
+  60%{ filter:blur(0) }
+  100%{ opacity:1; transform:none; filter:none }
+}
+/* kilau cahaya melintasi judul setelah huruf lengkap */
+.intro-title .fx-word{ position:relative; display:inline-flex }
+.intro-title .fx-word::after{
+  content:""; position:absolute; inset:-6% -4%; pointer-events:none;
+  background:linear-gradient(105deg, transparent 38%, rgba(255,255,255,.55) 50%, transparent 62%);
+  mix-blend-mode:soft-light; transform:translateX(-120%);
+  animation:fxSheen 1.6s cubic-bezier(.4,0,.2,1) 1.25s 1 both;
+}
+@keyframes fxSheen{ to{ transform:translateX(120%) } }
+/* garis emas di bawah nama sekolah */
+.intro-school{ position:relative; padding-bottom:14px }
+.intro-school::after{
+  content:""; position:absolute; left:50%; bottom:0; height:2px; width:120px; border-radius:2px;
+  background:linear-gradient(90deg, transparent, var(--intro-daisy), transparent);
+  transform:translateX(-50%) scaleX(0);
+  animation:fxLine .9s cubic-bezier(.16,.84,.28,1) .9s both;
+}
+@keyframes fxLine{ to{ transform:translateX(-50%) scaleX(1) } }
+/* cincin denyut pada tombol Mulai */
+.intro-cta{ position:relative; isolation:isolate }
+.intro-cta::before{
+  content:""; position:absolute; inset:0; border-radius:inherit; z-index:-1;
+  box-shadow:0 0 0 0 color-mix(in srgb, var(--intro-cream) 55%, transparent);
+  animation:fxPulse 2.4s cubic-bezier(.4,0,.2,1) 1.6s infinite;
+}
+@keyframes fxPulse{
+  0%{ box-shadow:0 0 0 0 color-mix(in srgb, var(--intro-cream) 50%, transparent) }
+  70%,100%{ box-shadow:0 0 0 18px transparent }
+}
+/* butir cahaya melayang */
+.fx-motes{ position:absolute; inset:0; z-index:1; pointer-events:none; overflow:hidden }
+.fx-motes i{
+  position:absolute; bottom:-12px; left:var(--x); width:var(--s); height:var(--s); border-radius:50%;
+  background:radial-gradient(circle, rgba(255,246,214,.9), rgba(255,246,214,0) 70%);
+  opacity:0; animation:fxMote var(--d) linear var(--dl) infinite;
+}
+@keyframes fxMote{
+  0%{ opacity:0; transform:translate3d(0,0,0) }
+  12%{ opacity:var(--o) }
+  85%{ opacity:var(--o) }
+  100%{ opacity:0; transform:translate3d(var(--dx), -105vh, 0) }
+}
+/* tirai lingkaran: dari tombol Mulai menutup layar, lalu memudar ke portal */
+.fx-curtain{
+  position:fixed; inset:0; z-index:400; pointer-events:none;
+  display:grid; place-items:center;
+  background:radial-gradient(120% 120% at var(--cx) var(--cy), #13306d 0%, #0b1f4a 45%, #08152f 100%);
+  clip-path:circle(0 at var(--cx) var(--cy));
+  animation:fxCurtain .5s cubic-bezier(.7,0,.3,1) forwards;
+}
+.fx-curtain img{
+  width:84px; height:84px; opacity:0;
+  filter:drop-shadow(0 12px 30px rgba(0,0,0,.45));
+  animation:fxCrest .5s cubic-bezier(.34,1.56,.64,1) .2s forwards;
+}
+.fx-curtain.is-out{ clip-path:circle(150% at var(--cx) var(--cy)); animation:fxFade .55s cubic-bezier(.4,0,.2,1) forwards }
+.fx-curtain.is-out img{ animation:fxCrestOut .4s ease forwards }
+@keyframes fxCurtain{ to{ clip-path:circle(150% at var(--cx) var(--cy)) } }
+@keyframes fxFade{ to{ opacity:0 } }
+@keyframes fxCrest{ from{ opacity:0; transform:scale(.6) rotate(-8deg) } to{ opacity:1; transform:none } }
+@keyframes fxCrestOut{ to{ opacity:0; transform:scale(1.25) } }
+
+/* ============ BAR PROGRES GULIR ============ */
+.fx-progress{
+  position:fixed; top:0; left:0; right:0; height:3px; z-index:150; pointer-events:none;
+  background:var(--grad-brand); transform-origin:0 50%; transform:scaleX(var(--sp, 0));
+  box-shadow:0 0 12px color-mix(in srgb, var(--brand-2) 60%, transparent);
+}
+
+/* ============ HERO BERANDA ============ */
+.hero-title{
+  margin-top:10px; font-size:clamp(26px, 4.2vw, 40px); line-height:1.1; font-weight:750;
+  letter-spacing:-.025em; color:var(--ink);
+}
+.hero-grad{
+  background:linear-gradient(110deg, var(--brand-1), var(--brand-2) 55%, var(--brand-1));
+  background-size:200% 100%;
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  animation:fxGradPan 6s ease-in-out infinite alternate;
+}
+:root[data-theme="dark"] .hero-grad{ background-image:linear-gradient(110deg, #7aa7ff, #4fe0d3 55%, #7aa7ff) }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .hero-grad{ background-image:linear-gradient(110deg, #7aa7ff, #4fe0d3 55%, #7aa7ff) } }
+@keyframes fxGradPan{ to{ background-position:100% 0 } }
+.hero .sub{ font-size:16px }
+.hero-stats{
+  list-style:none; display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;
+}
+.hero-stats li{
+  display:flex; align-items:baseline; gap:6px;
+  padding:8px 14px; border-radius:999px;
+  background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow-rest);
+  font-size:13px; color:var(--ink2);
+  animation:rise var(--dur-enter) var(--ease) backwards; animation-delay:calc(200ms + var(--i,0) * 70ms);
+}
+.hero-stats li:nth-child(2){ --i:1 } .hero-stats li:nth-child(3){ --i:2 }
+.hero-stats b{ font-size:16px; font-weight:750; color:var(--ink); font-variant-numeric:tabular-nums }
+.hero-stats li:first-child b{ color:var(--brand-1) }
+:root[data-theme="dark"] .hero-stats li:first-child b{ color:#7aa7ff }
+.hero-stats.is-empty li:not(:first-child){ display:none }
+body.waking .hero-title{ animation:wake .44s cubic-bezier(.22,1,.36,1) 180ms both }
+body.waking .hero-stats{ animation:wake .44s cubic-bezier(.22,1,.36,1) 270ms both }
+
+/* judul di dalam slider: gradasi lembut + bayangan */
+#portal-title{ text-shadow:0 6px 30px rgba(0,0,0,.35) }
+
+/* pencarian: cincin fokus bercahaya */
+.search{ transition:box-shadow .3s var(--ease), background-color .3s var(--ease), transform .3s var(--ease) }
+.search:focus-within{
+  box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent), 0 12px 30px -16px color-mix(in srgb, var(--accent) 60%, transparent);
+  transform:translateY(-1px);
+}
+.search:focus-within .s-ic{ color:var(--accent); transform:scale(1.08) }
+.search .s-ic{ transition:color .25s var(--ease), transform .25s var(--ease) }
+
+/* ============ KARTU MAPEL ============ */
+.card{
+  overflow:hidden; isolation:isolate;
+  --mx:50%; --my:50%; --rx:0deg; --ry:0deg;
+}
+/* aksen warna mapel di tepi atas */
+.card::before{
+  content:""; position:absolute; left:0; right:0; top:0; height:3px; z-index:1;
+  background:linear-gradient(90deg, var(--c), color-mix(in srgb, var(--c) 30%, transparent));
+  transform:scaleX(.18); transform-origin:left; opacity:.9;
+  transition:transform .45s var(--ease);
+}
+/* sorotan cahaya mengikuti kursor */
+.card::after{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; opacity:0;
+  background:radial-gradient(260px circle at var(--mx) var(--my), color-mix(in srgb, var(--c) 16%, transparent), transparent 70%);
+  transition:opacity .35s var(--ease);
+}
+.tile{ transition:transform .45s var(--ease-back), box-shadow .3s var(--ease) }
+.card-go{
+  position:absolute; top:18px; right:14px; z-index:2;
+  display:inline-flex; align-items:center; gap:2px; padding:3px 6px 3px 10px; border-radius:999px;
+  background:color-mix(in srgb, var(--c) 12%, var(--surface));
+  font-size:12.5px; font-weight:650; color:var(--c);
+  opacity:0; transform:translateY(6px);
+  transition:opacity .3s var(--ease), transform .3s var(--ease);
+}
+.card-go svg{ width:14px; height:14px; transition:transform .3s var(--ease) }
+@media (hover: hover) and (pointer: fine){
+  .card:hover{
+    transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(-4px);
+    box-shadow:0 18px 40px -18px color-mix(in srgb, var(--c) 55%, rgba(0,0,0,.35)), 0 2px 6px rgba(0,0,0,.05);
+    border-color:color-mix(in srgb, var(--c) 35%, var(--line));
+  }
+  .card:hover::before{ transform:scaleX(1) }
+  .card:hover::after{ opacity:1 }
+  .card:hover .tile{ transform:translateY(-2px) rotate(-6deg) scale(1.08); box-shadow:0 10px 20px -10px var(--c) }
+  .card:hover .card-go{ opacity:1; transform:none }
+  .card:hover .card-go svg{ transform:translateX(3px) }
+  .card:hover .chev{ opacity:0 }
+}
+.card:focus-visible .card-go{ opacity:1; transform:none }
+@media (hover: none){ .card-go{ display:none } }
+
+/* ============ RIAK (ripple) ============ */
+.fx-rip-host{ position:relative; overflow:hidden }
+.fx-ripple{
+  position:absolute; border-radius:50%; pointer-events:none; z-index:0;
+  width:var(--r); height:var(--r); left:calc(var(--x) - var(--r) / 2); top:calc(var(--y) - var(--r) / 2);
+  background:currentColor; opacity:.18; transform:scale(0);
+  animation:fxRipple .6s cubic-bezier(.2,.7,.3,1) forwards;
+}
+.btn.primary .fx-ripple, .ab-primary .fx-ripple{ background:#fff; opacity:.3 }
+@keyframes fxRipple{ to{ transform:scale(1); opacity:0 } }
+
+/* ============ MUNCUL SAAT DIGULIR ============ */
+.fx-reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s var(--ease), transform .7s var(--ease); transition-delay:calc(var(--rd, 0) * 90ms) }
+.fx-reveal.is-in{ opacity:1; transform:none }
+
+/* ============ FOOTER ============ */
+footer .f-col li{ transition:transform .25s var(--ease), color .25s var(--ease) }
+@media (hover: hover) and (pointer: fine){ footer .f-col li:hover{ transform:translateX(4px); color:var(--ink) } }
+footer{ position:relative }
+footer::before{
+  content:""; position:absolute; left:0; right:0; top:-1px; height:1px;
+  background:linear-gradient(90deg, transparent, var(--brand-2), var(--brand-1), transparent); opacity:.55;
+}
+
+/* ============ LOGIN ============ */
+.login-sheet .f-field input{ transition:border-color .25s var(--ease), box-shadow .25s var(--ease), transform .25s var(--ease) }
+.login-sheet .f-field input:focus{ transform:translateY(-1px) }
+.form-err:not([hidden]){ animation:fxShake .42s cubic-bezier(.36,.07,.19,.97) both }
+@keyframes fxShake{ 10%,90%{ transform:translateX(-1px) } 20%,80%{ transform:translateX(3px) } 30%,50%,70%{ transform:translateX(-5px) } 40%,60%{ transform:translateX(5px) } }
+.login-pic{ overflow:hidden }
+.login-pic img{ transition:transform 6s cubic-bezier(.2,.6,.2,1) }
+@media (hover: hover) and (pointer: fine){ .login-sheet:hover .login-pic img{ transform:scale(1.06) } }
+
+/* ============ PANEL ADMIN ============ */
+.k-stats{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:12px; margin:4px 0 18px;
+}
+.k-stat{
+  position:relative; overflow:hidden;
+  background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:14px 16px;
+  box-shadow:var(--shadow-rest);
+  animation:rise var(--dur-enter) var(--ease) backwards; animation-delay:calc(var(--i,0) * 60ms);
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.k-stat:nth-child(2){ --i:1 } .k-stat:nth-child(3){ --i:2 } .k-stat:nth-child(4){ --i:3 }
+.k-stat::before{ content:""; position:absolute; inset:0 auto 0 0; width:4px; background:var(--brand-1) }
+.k-stat-good::before{ background:var(--good) } .k-stat-off::before{ background:var(--ink3) } .k-stat-t::before{ background:var(--brand-3) }
+.k-stat b{ display:block; font-size:26px; font-weight:750; letter-spacing:-.02em; line-height:1.1; font-variant-numeric:tabular-nums }
+.k-stat span{ font-size:12.5px; color:var(--ink2) }
+@media (hover: hover) and (pointer: fine){ .k-stat:hover{ transform:translateY(-2px); box-shadow:var(--shadow-hover) } }
+.k-row{ position:relative; overflow:hidden }
+.k-row::before{
+  content:""; position:absolute; left:0; top:10px; bottom:10px; width:3px; border-radius:0 3px 3px 0;
+  background:var(--c, var(--accent)); transform:scaleY(.35); opacity:.55;
+  transition:transform .35s var(--ease), opacity .35s var(--ease);
+}
+.k-mark{ color:var(--c) }
+@media (hover: hover) and (pointer: fine){
+  .k-row:hover{ transform:translateX(3px) }
+  .k-row:hover::before{ transform:scaleY(1); opacity:1 }
+  .k-row:hover .k-mark{ background:color-mix(in srgb, var(--c) 14%, var(--fill)) }
+}
+.k-form-card:not([hidden]){ animation:fxSlideDown .45s var(--ease) both }
+@keyframes fxSlideDown{ from{ opacity:0; transform:translateY(-12px) scale(.985) } to{ opacity:1; transform:none } }
+.page-bar{ backdrop-filter:saturate(1.6) blur(14px); -webkit-backdrop-filter:saturate(1.6) blur(14px) }
+.k-view:not([hidden]){ animation:fxViewIn .4s var(--ease) both }
+@keyframes fxViewIn{ from{ opacity:0; transform:translateX(14px) } to{ opacity:1; transform:none } }
+
+/* toast masuk lebih hidup */
+.toasts > *{ animation:fxToast .45s var(--ease-back) both }
+@keyframes fxToast{ from{ opacity:0; transform:translateY(14px) scale(.94) } to{ opacity:1; transform:none } }
+
+/* ============ GERAK MINIM ============ */
+@media (prefers-reduced-motion: reduce){
+  .intro-title .ch, .intro-title .fx-word::after, .intro-school::after, .intro-cta::before,
+  .fx-motes, .hero-grad, .hero-stats li, .k-stat, .k-form-card, .k-view, .toasts > *{ animation:none !important }
+  .intro-school::after{ transform:translateX(-50%) }
+  .fx-motes, .fx-ripple, .fx-progress{ display:none !important }
+  .fx-curtain{ display:none !important }
+  .fx-reveal{ opacity:1; transform:none; transition:none }
+  .card:hover{ transform:none !important }
+  .card:hover .tile{ transform:none }
+}

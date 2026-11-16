@@ -664,6 +664,7 @@
       '<span class="tile" style="background:' + rgba(e.color, .13) + '">' + I(e.icon || "book") + '</span>' +
       '<span class="txt"><h3>' + esc(name) + '</h3><p class="cap">Kelas ' + esc(klass) + ' · ' + phaseOf(klass) + (e.teacher ? " · " + esc(e.teacher) : "") + '</p></span>' +
       '<span class="chev" aria-hidden="true">' + I(ext ? "external-link" : "chevron-right") + '</span>' +
+      '<span class="card-go" aria-hidden="true">Buka LMS ' + I("chevron-right") + '</span>' +
     '</a>';
   }
   function esc(s){
@@ -811,8 +812,15 @@
     var pageSub = document.querySelector("#modal-kelola .page-sub");
     if(pageSub) pageSub.textContent = "Atur tautan LMS untuk kelas " + kelolaClass + ".";
     if($("k-count")) $("k-count").textContent = entries.length + " LMS · " + shown + " tampil" + (off ? " · " + off + " arsip" : "");
+    if($("k-stats")){
+      $("k-stats").innerHTML =
+        '<div class="k-stat"><b data-count>' + entries.length + '</b><span>LMS kelas ' + esc(kelolaClass) + '</span></div>' +
+        '<div class="k-stat k-stat-good"><b data-count>' + shown + '</b><span>tampil ke siswa</span></div>' +
+        '<div class="k-stat k-stat-off"><b data-count>' + off + '</b><span>arsip</span></div>' +
+        '<div class="k-stat k-stat-t"><b data-count>' + entries.filter(function(e){ return e.teacher; }).length + '</b><span>berisi nama guru</span></div>';
+    }
     if(kList) kList.innerHTML = entries.map(function(e, i){
-      return '<div class="k-row" data-id="' + esc(e.id) + '" data-i="' + i + '" style="--i:' + i + '">' +
+      return '<div class="k-row" data-id="' + esc(e.id) + '" data-i="' + i + '" style="--i:' + i + ';--c:' + esc(e.color || "#0d9488") + '">' +
         '<span class="k-mark" style="color:' + esc(e.color || "#0d9488") + '">' + I(e.icon || "book") + "</span>" +
         '<span class="k-info"><b>' + esc(e.name || "Tanpa nama") + "</b>" +
         "<small>" + esc(e.file || "—") + (e.teacher ? " · " + esc(e.teacher) : "") + "</small></span>" +
