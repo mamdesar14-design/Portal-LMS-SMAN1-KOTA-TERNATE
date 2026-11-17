@@ -44,8 +44,12 @@ const SCHOOL_PROFILE = {
 const DEFAULT_SLIDERS = [
   { title: "Gedung Utama SMA Negeri 1 Kota Ternate", imageUrl: "/assets/slider/gedung-utama.jpg", sortOrder: 0, pub: true },
   { title: "Halaman & Gedung Sekolah", imageUrl: "/assets/slider/halaman-sekolah.jpg", sortOrder: 1, pub: true },
-  /* wajah siswa sudah diburamkan */
+  /* wajah siswa diburamkan per orang */
   { title: "Gerbang SMA Negeri 1 Kota Ternate", imageUrl: "/assets/slider/gerbang-sekolah.jpg", sortOrder: 2, pub: true },
+  /* wajah setiap orang diburamkan satu per satu */
+  { title: "Sosialisasi Program Guru Transformatif bersama Putera Sampoerna Foundation", imageUrl: "/assets/slider/sosialisasi-guru-transformatif.jpg", sortOrder: 3, pub: true },
+  { title: "Polantas Goes to School: Sosialisasi Keselamatan Berlalu Lintas", imageUrl: "/assets/slider/polantas-goes-to-school.jpg", sortOrder: 4, pub: true },
+  { title: "Gedung Depan SMA Negeri 1 Kota Ternate", imageUrl: "/assets/slider/gedung-depan.jpg", sortOrder: 5, pub: true },
   /* tampil paling depan (sortOrder negatif) */
   { title: "Keluarga Besar Guru SMA Negeri 1 Kota Ternate", imageUrl: "/assets/slider/guru-smansa.jpg", sortOrder: -1, pub: true },
 ];
