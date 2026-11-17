@@ -1979,7 +1979,7 @@ function home(){
 /* ---------- MY COURSES ---------- */
 function courses(){
   return `<div class="sec-h"><span class="ic">📘</span><h2>Unit Belajar</h2><span class="right">${semFilter("semC")}</span></div>
-  <p class="muted">12 unit · 8 misi per unit · 3 JP per pertemuan (108 JP/tahun). Unit terbuka berurutan sesuai Alur Belajar: selesaikan semua misi (✅) untuk membuka unit berikutnya.</p>
+  <p class="muted">12 unit · 8 misi per unit · 3 JP per pertemuan (108 JP/tahun). Semua unit terbuka: kerjakan unit mana saja sesuai arahan guru. Di dalam unit, selesaikan misi secara berurutan dan raih nilai Formatif tuntas untuk mendapat sertifikat unit.</p>
   ${[1,2].filter(s=>R.sem==="all"||String(s)===R.sem).map(s=>`<h3 style="font-size:20px">Semester ${s}</h3>
    <div class="grid3">${UNITS.filter(u=>u.sem===s).map(u=>`<div class="col ${elKey(u.el)}" style="border-radius:14px"><div class="ulist">${unitCard(u)}</div></div>`).join("")}</div>`).join("")}`;
 }
@@ -4757,7 +4757,7 @@ document.addEventListener("click",e=>{if(e.target.closest("[data-act=guruReload]
 const UNIT_ORDER=SEM_UNITS[1].concat(SEM_UNITS[2]);
 /* bersihkan "buka semua" lama yang tersimpan dari kode guru versi sebelumnya */
 if(S.unlockAll&&!S.teacher){S.unlockAll=false;save()}
-function unitLocked(n){if(S.unlockAll||S.teacher) return null; const i=UNIT_ORDER.indexOf(+n); if(i<=0) return null;
+function unitLocked(n){return null; /* semua unit terbuka: siswa memilih unit sesuai arahan guru */ if(S.unlockAll||S.teacher) return null; const i=UNIT_ORDER.indexOf(+n); if(i<=0) return null;
   for(let k=0;k<i;k++){if(!unitAllDone(UNIT_ORDER[k])) return UNIT_ORDER[k]} return null}
 function unitLockMsg(n){const p=unitLocked(n), u=UNITS.find(x=>x.n===p);
   toast(`🔒 Unit ${n} masih terkunci. Selesaikan dulu semua misi Unit ${p}: ${u?u.title:""}.`); return p}
