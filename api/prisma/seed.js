@@ -61,17 +61,22 @@ async function main() {
   }
 
   /* Akun hanya dibuat sekali — sandi TIDAK di-reset tiap restart container.
-     Untuk mengganti sandi: hapus baris User ini di database, lalu seed ulang. */
-  const existing = username && password ? await prisma.user.findUnique({ where: { username } }) : true;
-  if (!existing) {
-    const passwordHash = await argon2.hash(password, { type: argon2.argon2id });
-    await prisma.user.create({ data: { username, passwordHash } });
-    console.log(`Akun admin dibuat: "${username}"`);
-  } else if (username && password) {
-    console.log(`Akun admin sudah ada: "${username}" (sandi tidak diubah)`);
+     Untuk mengganti sandi: hapus baris User ini di database, lalu seed ulang.
+     Admin kedua (opsional): ADMIN_USER2, sandi ADMIN_PASS2 (bila kosong memakai ADMIN_PASS). */
+  const accounts = [];
+  if (username && password) accounts.push([username, password]);
+  const u2 = (process.env.ADMIN_USER2 || "").trim(), p2 = process.env.ADMIN_PASS2 || password;
+  if (accounts.length && u2 && p2 && u2 !== username) accounts.push([u2, p2]);
+  for (const [u, pw] of accounts) {
+    const existing = await prisma.user.findUnique({ where: { username: u } });
+    if (!existing) {
+      const passwordHash = await argon2.hash(pw, { type: argon2.argon2id });
+      await prisma.user.create({ data: { username: u, passwordHash } });
+      console.log(`Akun admin dibuat: "${u}"`);
+    } else console.log(`Akun admin sudah ada: "${u}" (sandi tidak diubah)`);
   }
-  const others = username && password
-    ? await prisma.user.deleteMany({ where: { username: { not: username } } })
+  const others = accounts.length
+    ? await prisma.user.deleteMany({ where: { username: { notIn: accounts.map((x) => x[0]) } } })
     : { count: 0 };
   if (others.count) console.log(`${others.count} akun lama dihapus — hanya akun admin tetap yang berlaku.`);
 

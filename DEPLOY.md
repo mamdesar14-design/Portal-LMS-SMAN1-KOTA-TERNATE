@@ -53,6 +53,8 @@ postgresql://USER:PASSWORD@ep-xxxx.region.aws.neon.tech/neondb?sslmode=require
 | `NODE_ENV` | `production` |
 | `ADMIN_USER` | email admin sekolah (dipakai login di website) |
 | `ADMIN_PASS` | kata sandi admin — **WAJIB diganti, jangan default!** |
+| `ADMIN_USER2` | (opsional) email admin kedua, misalnya Kepala Sekolah |
+| `ADMIN_PASS2` | (opsional) kata sandi admin kedua; bila kosong memakai `ADMIN_PASS` |
 | `ALLOWED_ORIGINS` | (isi setelah website portal jadi — lihat langkah 3) |
 
 4. Klik **Create Web Service** → tunggu deploy pertama

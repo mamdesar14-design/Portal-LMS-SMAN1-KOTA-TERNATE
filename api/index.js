@@ -279,6 +279,11 @@ async function seedRoute(req, res) {
   if (!authorized) return send(res, 403, { error: "forbidden" });
   const passwordHash = await argon2.hash(password, { type: argon2.argon2id });
   await prisma.user.upsert({ where: { username }, update: { passwordHash }, create: { username, passwordHash, role: "ADMIN" } });
+  const u2 = (process.env.ADMIN_USER2 || "").trim(), p2 = process.env.ADMIN_PASS2 || password;
+  if (u2 && u2 !== username) {
+    const h2 = await argon2.hash(p2, { type: argon2.argon2id });
+    await prisma.user.upsert({ where: { username: u2 }, update: { passwordHash: h2 }, create: { username: u2, passwordHash: h2, role: "ADMIN" } });
+  }
   return send(res, 200, { ok: true });
 }
 
